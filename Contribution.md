@@ -1,6 +1,3 @@
-### `CONTRIBUTING.md`
-
-```markdown
 # Contributing to This Project
 
 ## Legal Notice
@@ -72,7 +69,5 @@ Follow these conventions to ensure clean and maintainable code:
 - Ensure **null-checks** and **exception handling**.
 - Follow DRY and SOLID
 - All switch-statements should have a default case.
-
 ---
-```
 
