@@ -24,7 +24,7 @@ env:
 
 
 jobs:
-  release-nuget-package:
+  build-samples-solution:
     runs-on: gha-runner-scale-set-windows
     steps:
       - name: Checkout source
