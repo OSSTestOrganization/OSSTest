@@ -1,0 +1,37 @@
+name: BuildSamples
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+  actions: read
+  checks: write
+  pull-requests: write
+  
+defaults:
+  run:
+    shell: pwsh
+
+env:
+  GITHUB_BRANCH: ${{ github.head_ref || github.ref_name }}
+
+  BUILD_CONFIGURATION: Release
+  BUILD_PLATFORM: 'Any CPU'
+  BUILD_SOLUTION: \dummy\dummy.sln
+
+
+jobs:
+  release-nuget-package:
+    runs-on: gha-runner-scale-set-windows
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+        
+      - name: Restore dependencies
+        run: dotnet restore ${{ env.BUILD_SOLUTION }}
+      
+      - name: Build
+        run: dotnet build ${{ env.BUILD_SOLUTION }} --configuration ${{ env.BUILD_CONFIGURATION }} --no-restore
