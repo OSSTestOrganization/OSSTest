@@ -20,7 +20,7 @@ env:
 
   BUILD_CONFIGURATION: Release
   BUILD_PLATFORM: 'Any CPU'
-  BUILD_SOLUTION: \dummy\dummy.sln
+  BUILD_SOLUTION: /dummy/dummy.sln
 
 
 jobs:
@@ -32,7 +32,7 @@ jobs:
     runs-on: production-generic-windows-2022-vs17.12
     steps:
       - name: print branch
-        run: echo ${{env.GITHUB_BRANCH}}
+        run: echo $env:GITHUB_BRANCH
        
       - name: Checkout source
         uses: actions/checkout@v4
