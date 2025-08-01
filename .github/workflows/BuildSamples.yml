@@ -16,7 +16,7 @@ defaults:
     shell: pwsh
 
 env:
-  GITHUB_BRANCH: ${{ github.head_ref || github.ref_name }}
+  GITHUB_BRANCH: main
 
   BUILD_CONFIGURATION: Release
   BUILD_PLATFORM: 'Any CPU'
