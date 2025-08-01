@@ -14,9 +14,9 @@ permissions:
 defaults:
   run:
     shell: pwsh
-
+    
 env:
-  GITHUB_BRANCH: main
+  GITHUB_BRANCH: ${{ github.head_ref || github.ref_name }}
 
   BUILD_CONFIGURATION: Release
   BUILD_PLATFORM: 'Any CPU'
@@ -27,8 +27,11 @@ jobs:
   build-samples-solution:
     runs-on: gha-runner-scale-set-windows
     steps:
+      - name: print branch
+        run: echo ${{env.GITHUB_BRANCH}}
+       
       - name: Checkout source
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         
       - name: Restore dependencies
         run: dotnet restore ${{ env.BUILD_SOLUTION }}
