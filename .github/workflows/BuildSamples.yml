@@ -24,8 +24,12 @@ env:
 
 
 jobs:
+
+
   build-samples-solution:
-    runs-on: gha-runner-scale-set-windows
+  
+    name: build samples
+    runs-on: production-generic-windows-2022-vs17.12
     steps:
       - name: print branch
         run: echo ${{env.GITHUB_BRANCH}}
