@@ -42,3 +42,8 @@ jobs:
       
       - name: Build
         run: dotnet build ${{ env.BUILD_SOLUTION }} --configuration ${{ env.BUILD_CONFIGURATION }} --no-restore
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: '/language:${{ matrix.language }}'
