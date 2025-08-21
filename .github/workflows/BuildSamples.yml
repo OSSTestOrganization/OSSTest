@@ -20,7 +20,7 @@ env:
   GITHUB_BRANCH: ${{ github.head_ref || github.ref_name }}
   BUILD_CONFIGURATION: Release
   BUILD_PLATFORM: 'Any CPU'
-  BUILD_SOLUTION: /dummy/dummy.sln
+  BUILD_SOLUTION: dummy/dummy.sln
 
 jobs:
   codeql-analyze-and-build:
