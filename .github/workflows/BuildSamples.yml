@@ -51,15 +51,8 @@ jobs:
         run: dotnet restore ${{ env.BUILD_SOLUTION }}
 
       - name: Build solution (for CodeQL scan)
-        run: dotnet build ${{ env.BUILD_SOLUTION }} --configuration ${{ env.BUILD_CONFIGURATION }} --no-restore
+        run: msbuild ${{ env.BUILD_SOLUTION }} -p:configuration=Release -restore:True
 
       # Perform CodeQL Analysis
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
-
-      # (Optional) Rebuild any artifacts AFTER scan
-      - name: Restore dependencies (final build)
-        run: dotnet restore ${{ env.BUILD_SOLUTION }}
-
-      - name: Build solution (final build)
-        run: dotnet build ${{ env.BUILD_SOLUTION }} --configuration ${{ env.BUILD_CONFIGURATION }} --no-restore
