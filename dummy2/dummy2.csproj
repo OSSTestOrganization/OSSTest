@@ -9,11 +9,11 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{10D04826-1A04-4854-BDBB-AF4787F578C8}</ProjectGuid>
+    <ProjectGuid>{89B3FD24-81B7-48CA-8036-55AA99308DCE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>dummy</RootNamespace>
-    <AssemblyName>dummy</AssemblyName>
+    <RootNamespace>dummy2</RootNamespace>
+    <AssemblyName>dummy2</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <GeneratePkgDefFile>false</GeneratePkgDefFile>
@@ -57,15 +57,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="AssemblyInfo.cs" />
-    <None Include="Class1.cs" />
-    <None Include="ProjectTemplate.csproj" />
-    <None Include="dummy.ico" />
+    <None Include="Class.cs" />
+    <None Include="dummy2.ico" />
   </ItemGroup>
   <ItemGroup>
-    <VSTemplate Include="dummy.vstemplate" />
+    <VSTemplate Include="dummy2.vstemplate" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
