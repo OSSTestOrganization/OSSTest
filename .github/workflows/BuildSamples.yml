@@ -10,7 +10,7 @@ permissions:
   actions: read
   checks: write
   pull-requests: write
-  security-events: write  # Required for CodeQL
+  security-events: write 
 
 defaults:
   run:
@@ -46,11 +46,11 @@ jobs:
           languages: ${{ matrix.language }}
           build-mode: manual
 
-      # Restore and build for CodeQL
-      - name: Restore dependencies (for CodeQL scan)
+      # Restore and build
+      - name: Restore dependencies
         run: dotnet restore ${{ env.BUILD_SOLUTION }}
 
-      - name: Build solution (for CodeQL scan)
+      - name: Build solution
         run: dotnet build ${{ env.BUILD_SOLUTION }} -p:configuration=Release -restore:True
 
       # Perform CodeQL Analysis
