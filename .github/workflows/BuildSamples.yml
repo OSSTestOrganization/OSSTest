@@ -51,7 +51,7 @@ jobs:
         run: dotnet restore ${{ env.BUILD_SOLUTION }}
 
       - name: Build solution (for CodeQL scan)
-        run: msbuild ${{ env.BUILD_SOLUTION }} -p:configuration=Release -restore:True
+        run: dotnet build ${{ env.BUILD_SOLUTION }} -p:configuration=Release -restore:True
 
       # Perform CodeQL Analysis
       - name: Perform CodeQL Analysis
