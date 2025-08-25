@@ -148,8 +148,9 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MilestoneSystems.VideoOS.Platform.SDK" Version="*-*" />
-    <PackageReference Include="System.Resources.Extensions" Version="*">
-    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+      <PackageReference Include="System.Resources.Extensions" Version="*" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AudioForm.cs">
