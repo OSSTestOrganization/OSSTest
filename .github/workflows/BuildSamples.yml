@@ -54,7 +54,7 @@ jobs:
         uses: microsoft/setup-msbuild@v1
 
       - name: Build solution
-        run: dotnet build ${{ env.BUILD_SOLUTION }} -p:configuration=Release -restore:True
+        run: msbuild ${{ env.BUILD_SOLUTION }} -p:configuration=Release -restore:True
 
       # Perform CodeQL Analysis
       - name: Perform CodeQL Analysis
