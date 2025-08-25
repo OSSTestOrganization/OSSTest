@@ -10,40 +10,49 @@ permissions:
   actions: read
   checks: write
   pull-requests: write
-  
+  security-events: write 
+
 defaults:
   run:
     shell: pwsh
     
 env:
   GITHUB_BRANCH: ${{ github.head_ref || github.ref_name }}
-
   BUILD_CONFIGURATION: Release
   BUILD_PLATFORM: 'Any CPU'
-  BUILD_SOLUTION: /dummy/dummy.sln
-
+  BUILD_SOLUTION: dummy/dummy.sln
 
 jobs:
+  codeql-analyze-and-build:
+    name: CodeQL Scan and Build
+    runs-on: windows-latest
 
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['csharp']
 
-  build-samples-solution:
-  
-    name: build samples
-    runs-on: production-generic-windows-2022-vs17.12
     steps:
-      - name: print branch
+      - name: Print branch
         run: echo $env:GITHUB_BRANCH
-       
+
       - name: Checkout source
         uses: actions/checkout@v4
-        
+
+      # Initialize CodeQL
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: manual
+
+      # Restore and build
       - name: Restore dependencies
         run: dotnet restore ${{ env.BUILD_SOLUTION }}
-      
-      - name: Build
-        run: dotnet build ${{ env.BUILD_SOLUTION }} --configuration ${{ env.BUILD_CONFIGURATION }} --no-restore
 
+      - name: Build solution
+        run: dotnet build ${{ env.BUILD_SOLUTION }} -p:configuration=Release -restore:True
+
+      # Perform CodeQL Analysis
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
-        with:
-          category: '/language:${{ matrix.language }}'
