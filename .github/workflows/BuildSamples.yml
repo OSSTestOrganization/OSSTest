@@ -50,6 +50,9 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore ${{ env.BUILD_SOLUTION }}
 
+      - name: Setup Visual Studio
+        uses: microsoft/setup-msbuild@v1
+
       - name: Build solution
         run: dotnet build ${{ env.BUILD_SOLUTION }} -p:configuration=Release -restore:True
 
