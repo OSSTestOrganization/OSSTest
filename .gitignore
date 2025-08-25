@@ -11,6 +11,7 @@
 *.userprefs
 
 # CodeOwners file because teams don't match across orgs
+.github/CODEOWNERS
 
 # Build results
 .build*/
