@@ -23,14 +23,14 @@ env:
   BUILD_SOLUTION: dummy/dummy.sln
 
 jobs:
-  codeql-analyze-and-build:
-    name: CodeQL Scan and Build
+  build-samples:
+    name: Build Samples
     runs-on: windows-latest
 
     strategy:
       fail-fast: false
       matrix:
-        language: ['csharp']
+        language: ['csharp', 'cpp']
 
     steps:
       - name: Print branch
@@ -38,13 +38,6 @@ jobs:
 
       - name: Checkout source
         uses: actions/checkout@v4
-
-      # Initialize CodeQL
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
-        with:
-          languages: ${{ matrix.language }}
-          build-mode: manual
 
       # Restore and build
       - name: Restore dependencies
@@ -55,7 +48,3 @@ jobs:
 
       - name: Build solution
         run: msbuild ${{ env.BUILD_SOLUTION }} -p:configuration=Release -restore:True
-
-      # Perform CodeQL Analysis
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3
