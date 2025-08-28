@@ -2,6 +2,17 @@ name: BuildSamples
 
 on:
   workflow_dispatch:
+    inputs:
+      solution:
+        description: 'Solution Filter'
+        required: true
+        default: 'ComponentSamples.sln'
+        type: choice
+        options:
+          - 'ComponentSamples.sln'
+          - 'PluginSamples.sln'
+          - 'ProtocolSamples.sln'
+        
   pull_request:
     types: [opened, synchronize, reopened]
 
@@ -20,7 +31,7 @@ env:
   GITHUB_BRANCH: ${{ github.head_ref || github.ref_name }}
   BUILD_CONFIGURATION: Release
   BUILD_PLATFORM: 'Any CPU'
-  BUILD_SOLUTION: Samples\src\ComponentSamples.sln
+  BUILD_SOLUTION: Samples\src\${{inputs.solution}}
 
 jobs:
   build-samples:
