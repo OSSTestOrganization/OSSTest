@@ -184,20 +184,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="3rd_party_software_terms_and_conditions.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\src\packages\MilestoneSystems.VideoOS.Platform.SDK.25.2.15779\build\MilestoneSystems.VideoOS.Platform.SDK.targets" Condition="Exists('..\src\packages\MilestoneSystems.VideoOS.Platform.SDK.25.2.15779\build\MilestoneSystems.VideoOS.Platform.SDK.targets')" />
   </ImportGroup>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\src\packages\MilestoneSystems.VideoOS.Platform.SDK.25.2.15779\build\MilestoneSystems.VideoOS.Platform.SDK.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\src\packages\MilestoneSystems.VideoOS.Platform.SDK.25.2.15779\build\MilestoneSystems.VideoOS.Platform.SDK.targets'))" />
-  </Target>
 </Project>

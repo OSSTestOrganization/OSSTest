@@ -12,10 +12,10 @@ namespace RawVideoSourceRetriever
 {
     class Program
     {
-        const string Uri = "http://dkws-apimipsdk1.milestone.dk";
+        const string Uri = "http://localhost";
         const bool SecureOnly = false; // change to false to connect to servers older than 2021 R1 or servers not running HTTPS on the Identity/Management Server communication
-        const string User = "sako";
-        const string Password = "Pongam@n068";
+        const string User = "";
+        const string Password = "";
         const string Auth = "Negotiate";
 
         private static readonly Guid IntegrationId = new Guid("32BF2DAA-7041-4DB0-AF68-9718B8C3BD9D");
@@ -23,7 +23,7 @@ namespace RawVideoSourceRetriever
         private const string Version = "1.0";
         private const string ManufacturerName = "Sample Manufacturer";
 
-        private static readonly Guid CameraId = new Guid("336555a9-c539-4cd1-98d5-116ece385a84"); // Use relevant Camera Id here....
+        private static readonly Guid CameraId = new Guid("420763FA-BA6C-4513-82F8-13AB0372DD39"); // Use relevant Camera Id here....
 
         static void Main(string[] args)
         {
