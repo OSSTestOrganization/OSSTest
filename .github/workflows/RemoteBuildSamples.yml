@@ -3,17 +3,20 @@ name: BuildSamples
 on:
   workflow_dispatch:
   pull_request:
-    branches:
-        - main
     types: [opened, synchronize, reopened]
-
-env:
-  GITHUB_BRANCH: ${{ github.head_ref || github.ref_name }}
+    
+permissions:
+  contents: write
+  actions: read
+  checks: write
+  pull-requests: write
+  security-events: write
     
 jobs:
     build-public-samples-solution:
-        uses: milestonesys/reusable-workflows/.github/BuildSamples-Public.yml@${{env.GITHUB_BRANCH}}
+        uses: milestonesys/reusable-workflows/.github/BuildSamples-Public.yml@main
         with:
             solution: Samples\src\ComponentSamples.sln
+            branch: ${{ github.head_ref || github.ref_name }}
      
     
