@@ -14,7 +14,7 @@ permissions:
     
 jobs:
     build-public-samples-solution:
-        uses: milestonesys/reusable-workflows/.github/BuildSamples-Public.yml@main
+        uses: milestonesys/reusable-workflows/.github/workflows/BuildSamples-Public.yml@main
         with:
             solution: Samples\src\ComponentSamples.sln
             branch: ${{ github.head_ref || github.ref_name }}
