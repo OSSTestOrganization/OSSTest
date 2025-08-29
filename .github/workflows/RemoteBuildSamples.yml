@@ -4,14 +4,14 @@ on:
   workflow_dispatch:
   pull_request:
     types: [opened, synchronize, reopened]
-
+    
 permissions:
   contents: write
   actions: read
   checks: write
   pull-requests: write
   security-events: write
-
+  
 env:
   GITHUB_BRANCH: ${{ github.head_ref || github.ref_name }}
     
