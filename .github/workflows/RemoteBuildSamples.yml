@@ -17,6 +17,5 @@ jobs:
         uses: milestonesys/internal-reusable-workflows/.github/workflows/BuildSamples-Public.yml@main
         with:
             solution: Samples\src\ComponentSamples.sln
-            branch: ${{ github.head_ref || github.ref_name }}
      
     
