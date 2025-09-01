@@ -11,7 +11,7 @@ on:
         - component
         - Plugin
         - protocol
-        - private_repo_sol
+        - private_repo_2
     
 permissions:
   contents: write
@@ -34,3 +34,4 @@ jobs:
             
 
     
+
