@@ -1,0 +1,39 @@
+name: Sync-Public-Private-Repositories
+
+on:
+  workflow_dispatch:
+    inputs:
+      solution:
+        description: solution to build
+        required: true
+        type: choice
+        options:
+            -component
+            -Plugin
+            -protocol
+            -private_repo_sol
+    pull_request_id:
+        description: pull request to sync
+        required: true
+        type: string
+    
+permissions:
+  contents: write
+  actions: read
+  checks: write
+  pull-requests: write
+  security-events: write
+    
+jobs:
+
+    build-and-publish:
+    
+        runs-on: windows-latest #production-generic-windows-2022-vs17.12
+        steps:
+            - name: clone samples repository
+              uses: actions/checkout@v4
+              with:
+                repository: OSSTestOrganization/${{inputs.solution}}
+                path: main
+            
+    
