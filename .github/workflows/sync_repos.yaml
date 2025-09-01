@@ -8,14 +8,10 @@ on:
         required: true
         type: choice
         options:
-            -component
-            -Plugin
-            -protocol
-            -private_repo_sol
-    pull_request_id:
-        description: pull request to sync
-        required: true
-        type: string
+        - component
+        - Plugin
+        - protocol
+        - private_repo_sol
     
 permissions:
   contents: write
@@ -36,4 +32,5 @@ jobs:
                 repository: OSSTestOrganization/${{inputs.solution}}
                 path: main
             
+
     
